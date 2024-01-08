@@ -389,7 +389,6 @@ class Dragon(AnimModel):
 
 
     def interpolate_transforms(self, prev_frame, next_frame, progression):
-        # Utilisez l'interpolation linéaire ou sphérique (slerp) pour les rotations, translations, et échelles
         interpolated_pos = prev_frame.pos + (next_frame.pos - prev_frame.pos) * progression
         interpolated_rot = glm.slerp(prev_frame.rot, next_frame.rot, progression)
         interpolated_scale = prev_frame.scale + (next_frame.scale - prev_frame.scale) * progression
@@ -406,8 +405,7 @@ class Dragon(AnimModel):
 
         # Configurer les uniformes de lumière, caméra, etc.
         self.program['light.position'].write(self.app.light.position)
-        # ... Ajouter d'autres configurations uniformes si nécessaire
-
+        
         # Bind la texture si nécessaire
         for tex_name, tex_object in self.texture_objects.items():
             tex_object.use()  # suppose que chaque objet a une seule texture pour l'exemple
