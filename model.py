@@ -231,8 +231,8 @@ class ParticleModel(BaseModel):
 
     def init_render_data(self):
         self.texture_objects = {}
-        for tex_path in self.textures:  # self.textures est une liste de chemins
-            tex_name = os.path.basename(tex_path)  # Utilisez le nom du fichier comme clé
+        for tex_path in self.textures:
+            tex_name = os.path.basename(tex_path)
             self.texture_objects[tex_name] = self.load_texture(tex_path)
 
         # Charger les VBOs et VAOs pour chaque géométrie
@@ -251,8 +251,8 @@ class ParticleModel(BaseModel):
     def load_texture(self, path):
         # Charger une texture en utilisant Pygame et créer un objet texture ModernGL
         pg_img = pg.image.load(path).convert()
-        pg_img = pg.transform.flip(pg_img, False, True)  # Flip the image's origin to the lower-left for OpenGL
-        data = pg.image.tostring(pg_img, 'RGB', True)  # Convertir l'image Pygame en chaîne de données
+        pg_img = pg.transform.flip(pg_img, False, True) 
+        data = pg.image.tostring(pg_img, 'RGB', True) 
 
         # Créer une texture ModernGL
         texture = self.app.ctx.texture(pg_img.get_size(), 3, data)
@@ -300,7 +300,7 @@ class Dragon(AnimModel):
 
         # Initialiser les données pour gérer l'état de l'animation
         # Par exemple, vous pouvez initialiser des variables pour l'animation courante, la position temporelle actuelle, etc.
-        self.current_animation = self.animations[0]  # Supposons que nous utilisions la première animation pour commencer
+        self.current_animation = self.animations[0]
         self.current_time = 0  # Initialiser le temps courant de l'animation à 0
 
         # Initialiser les matrices de jointure pour chaque joint
@@ -314,7 +314,7 @@ class Dragon(AnimModel):
 
     def update(self):
         # Mise à jour du temps de l'animation
-        self.current_time += self.app.delta_time  # suppose que delta_time est le temps écoulé depuis la dernière frame
+        self.current_time += self.app.delta_time
 
         # Sélectionner l'animation courante (ici, prenons la première pour l'exemple)
         current_animation = self.animations[0]
@@ -339,7 +339,7 @@ class Dragon(AnimModel):
         # Parcourir tous les joints
         for joint_id, joint_data in self.skinning_data['joints'].items():
             # Obtenir les keyframes de l'animation pour ce joint
-            keyframes = animation[joint_id]  # Supposons une structure où chaque joint a ses keyframes dans l'animation
+            keyframes = animation[joint_id] 
 
             # Trouver les keyframes avant et après le temps actuel
             prev_frame, next_frame = self.find_frames(keyframes, time)
