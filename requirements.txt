@@ -1,0 +1,6 @@
+moderngl
+numpy
+pygame
+PyGLM
+pywavefront
+collada

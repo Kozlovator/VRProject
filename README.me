@@ -1,0 +1,49 @@
+# 3D Space Animation Project
+
+## Description
+This project was designed using Python, supported by the ModernGL libraries for graphics rendering and Pygame for window and event management. The main objective was to create an interactive space animation in which the Earth, with a mipmapping texture, revolves around the Sun. The starry background is created using a cube map, providing an immersive context for the scene. The lighting of the scene uses both diffuse and specular lighting, managed by GLSL shaders for the vertices and fragments, accentuating the realism of the animation. Free space navigation has been implemented to allow the user to explore the spatial environment intuitively. In addition, we have integrated particle systems on the planet Earth in the wake of its trajectory. The structure of the code, organised in several files, reflects a modular and extensible approach to the project.
+
+## Dependencies
+To run this project, you need to install the following Python libraries:
+
+- moderngl
+- numpy
+- pygame
+- PyGLM
+- pywavefront
+- collada
+
+You can install these by running `pip install -r requirements.txt` where `requirements.txt` includes all the above libraries.
+
+## Project Structure
+- **Objects:** The 'earth' and 'sun' models are located in their respective directories within the `objects` folder.
+- **Shaders:** The GLSL shaders are located in the `shaders` directory.
+- **Textures:** JPEG textures for earth, skybox, and sun are placed in their respective named folders within the `textures` directory.
+- **Python Files:** All the `.py` files, including the main script, are located in the root directory of the project.
+
+## How to Launch
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Ensure that all dependencies listed above are installed.
+4. Run the main script using Python. Example: `python main.py`
+
+## Models Data
+The 3D models data, including Earth and Sun, are structured as follows:
+
+- **Earth Model:** Located in `objects/earth/`
+- **Sun Model:** Located in `objects/sun/`
+
+These models are referenced by the main application and rendered using the ModernGL and Pygame libraries.
+
+## Textures
+Textures used for the Earth, Sun, and the skybox are located in the `textures` directory. Each entity has its own subdirectory named accordingly (e.g., `textures/earth`, `textures/sun`, `textures/skybox`).
+
+## Shaders
+Vertex and Fragment shaders are placed in the `shaders` directory and are essential for rendering the graphics with the desired lighting and texture effects.
+
+## Contributing
+Feel free to fork this project, submit issues, and send pull requests to contribute to the project's improvement and evolution.
+
+## License
+[Specify the license under which your project is released]
+
