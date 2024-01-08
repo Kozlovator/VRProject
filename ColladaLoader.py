@@ -62,12 +62,6 @@ class ColladaLoader:
             if isinstance(child, collada.animation.Animation):
                 # Si l'enfant est une animation, plongez plus profondément
                 self.extract_animation_data(child, animations_list)
-            # Ici vous pouvez ajouter des conditions pour extraire des canaux ou d'autres données
-
-        # Ajouter des données spécifiques de l'animation à animations_list si pertinent
-        # Par exemple, si les canaux sont directement sur l'animation (dépend de la bibliothèque COLLADA utilisée)
-        # for channel in animation.channels:
-        #     animations_list.append(channel.source)  # ou une autre donnée pertinente
 
     def get_textures(self):
         #Extrait et retourne les chemins des textures.
