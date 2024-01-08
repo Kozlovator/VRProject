@@ -248,9 +248,6 @@ class ParticleModel(BaseModel):
             )
             self.vaos[geometry['id']] = vao
 
-        # Assurez-vous que le programme shader est bien initialisé et configuré pour le skinning
-        # (Cela pourrait inclure la préparation des matrices de joints uniformes, etc.)
-
     def load_texture(self, path):
         # Charger une texture en utilisant Pygame et créer un objet texture ModernGL
         pg_img = pg.image.load(path).convert()
@@ -263,13 +260,9 @@ class ParticleModel(BaseModel):
         return texture
 
     def update(self):
-        # Mettre à jour l'état de l'animation ici
-        # Cela peut inclure la mise à jour des matrices des joints en fonction des animations actives.
         pass
 
     def render(self):
-        # Activer le shader, configurer les uniformes, textures, etc.
-        # Rendu du modèle avec des données animées
         pass
 
 class Dragon(AnimModel):
@@ -294,22 +287,18 @@ class Dragon(AnimModel):
         for geometry in self.geometry:
             # Créer et remplir le VBO
             vbo = self.app.ctx.buffer(geometry['vertices'].tobytes())
-            self.vbos[geometry['id']] = vbo  # Vous devrez déterminer un identifiant unique pour chaque géométrie
+            self.vbos[geometry['id']] = vbo
 
             # Créer le VAO et l'associer au VBO
             vao = self.app.ctx.vertex_array(self.program, [(vbo, '3f 3f 2f', 'in_vert', 'in_norm', 'in_text')])
             self.vaos[geometry['id']] = vao
 
-        # Assurez-vous que le programme shader est bien initialisé et configuré pour le skinning
-        # (Cela pourrait inclure la préparation des matrices de joints uniformes, etc.)
-
     def setup_animation(self):
-        # Assurez-vous que les données d'animation sont chargées
         if not self.animations:
             print("Erreur : Aucune donnée d'animation trouvée pour le dragon.")
             return
 
-        # Initialisez les données pour gérer l'état de l'animation
+        # Initialiser les données pour gérer l'état de l'animation
         # Par exemple, vous pouvez initialiser des variables pour l'animation courante, la position temporelle actuelle, etc.
         self.current_animation = self.animations[0]  # Supposons que nous utilisions la première animation pour commencer
         self.current_time = 0  # Initialiser le temps courant de l'animation à 0
@@ -342,8 +331,6 @@ class Dragon(AnimModel):
             uniform_location = f'jointTransforms[{i}]'
             if uniform_location in self.program:
                 self.program[uniform_location].write(joint_transform.tobytes())
-
-        # Assurez-vous de mettre à jour le reste comme il convient
         super().update()
 
     def calculate_joint_transforms(self, animation, time):
@@ -351,22 +338,22 @@ class Dragon(AnimModel):
 
         # Parcourir tous les joints
         for joint_id, joint_data in self.skinning_data['joints'].items():
-            # Obtenez les keyframes de l'animation pour ce joint
+            # Obtenir les keyframes de l'animation pour ce joint
             keyframes = animation[joint_id]  # Supposons une structure où chaque joint a ses keyframes dans l'animation
 
-            # Trouvez les keyframes avant et après le temps actuel
+            # Trouver les keyframes avant et après le temps actuel
             prev_frame, next_frame = self.find_frames(keyframes, time)
 
-            # Calculez la progression entre ces keyframes
+            # Calculer la progression entre ces keyframes
             progression = self.calculate_progression(prev_frame, next_frame, time)
 
-            # Interpolez les transformations entre les keyframes
+            # Interpoler les transformations entre les keyframes
             interpolated_transform = self.interpolate_transforms(prev_frame, next_frame, progression)
 
-            # Appliquez la transformation du parent si nécessaire (dépend de la structure de vos données)
+            # Appliquer la transformation du parent si nécessaire (dépend de la structure de vos données)
             # Par exemple: interpolated_transform = parent_transform * interpolated_transform
 
-            # Convertissez la transformation en une matrice 4x4 et ajoutez-la à la liste des transformations
+            # Convertir la transformation en une matrice 4x4 et ajoutez-la à la liste des transformations
             joint_transforms.append(interpolated_transform.to_matrix())
 
         return joint_transforms
