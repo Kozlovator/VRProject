@@ -26,6 +26,9 @@ class Scene:
         # Ajouter la Terre en orbite autour du Soleil
         add(Earth(app, particle_system= self.particle_system,orbit_center=sun_position, orbit_radius=25, orbit_speed=0.0003, pos=(34.99999887500001, 0, -19.9925000001125)))
 
+        # Ajouter un dragon
+        # add(Dragon(self.app, "objects/dragon/Dragon.dae"))
+
     def init_particles(self):
         """
         # Définir le nombre de particules
