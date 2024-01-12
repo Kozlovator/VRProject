@@ -8,7 +8,7 @@ class Texture:
         self.textures = {}
         self.textures['earth'] = self.get_texture(path='textures/earth/8k_earth_daymap.jpg')
         self.textures['sun'] = self.get_texture(path='textures/sun/2k_sun.jpg')
-        self.textures['earth_normal'] = self.get_texture(path='textures/earth/normal_map.png')
+        self.textures['u_normal_map'] = self.get_texture(path='textures/earth/normal_map.png')
 
         self.textures['cubemap'] = self.get_cubemap_texture([
             'textures/skybox/right.png',

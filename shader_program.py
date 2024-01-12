@@ -33,7 +33,7 @@ class ShaderProgram:
 
         # Lier la normal map de la Terre
         earth_normal_map.use(location=1)
-        self.programs['earth']['earthNormalMap'] = 1
+        self.programs['earth']['u_normal_map'] = 1
 
     def destroy(self):
         [program.release() for program in self.programs.values()]
