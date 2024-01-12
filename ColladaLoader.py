@@ -36,7 +36,7 @@ class ColladaLoader:
         controllers = []
         if self.mesh:
             for controller in self.mesh.controllers:
-                if isinstance(controller, collada.controller.Skin):  # Vérifie si le contrôleur est de type Skin
+                if isinstance(controller, collada.controller.Skin):  # Vérifiez si le contrôleur est de type Skin
                     skin_data = {
                         'bind_shape_matrix': controller.bind_shape_matrix,
                         'weights': controller.weights,
@@ -56,7 +56,6 @@ class ColladaLoader:
 
     def extract_animation_data(self, animation, animations_list):
         #Extrait récursivement les données des animations et des enfants.
-        # Supposons que chaque animation peut contenir des sous-animations
         for child in animation.children:
             if isinstance(child, collada.animation.Animation):
                 # Si l'enfant est une animation, plongez plus profondément
