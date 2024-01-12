@@ -36,11 +36,10 @@ class ColladaLoader:
         controllers = []
         if self.mesh:
             for controller in self.mesh.controllers:
-                if isinstance(controller, collada.controller.Skin):  # Vérifiez si le contrôleur est de type Skin
+                if isinstance(controller, collada.controller.Skin):  # Vérifie si le contrôleur est de type Skin
                     skin_data = {
                         'bind_shape_matrix': controller.bind_shape_matrix,
                         'weights': controller.weights,
-                        # Ajoutez ici d'autres données pertinentes en utilisant les attributs disponibles
                     }
                     controllers.append(skin_data)
         return controllers
