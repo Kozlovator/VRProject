@@ -4,7 +4,7 @@ import glm
 import struct
 import moderngl
 import random
-import random
+import pygame as pg
 from ColladaLoader import ColladaLoader
 
 class BaseModel:
