@@ -1,4 +1,4 @@
-"""from collada import Collada
+from collada import Collada
 import collada.polylist
 import collada.triangleset
 
@@ -70,4 +70,3 @@ class ColladaLoader:
             for image in self.mesh.images:
                 textures.append(image.path)
         return textures
-"""
