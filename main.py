@@ -7,9 +7,6 @@ from light import Light
 from mesh import Mesh
 from scene import Scene
 import numpy as np
-
-
-
 class GraphicsEngine:
     def __init__(self, win_size=(1600, 900)):
         # init pygame modules

@@ -3,4 +3,4 @@ numpy
 pygame
 PyGLM
 pywavefront
-pycollada
+
