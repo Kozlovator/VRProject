@@ -6,6 +6,7 @@ import moderngl
 import random
 import pygame as pg
 from ColladaLoader import ColladaLoader
+import os
 
 class BaseModel:
     def __init__(self, app, vao_name, tex_id, pos=(0, 0, 0), rot=(0, 0, 0), scale=(1, 1, 1)):
