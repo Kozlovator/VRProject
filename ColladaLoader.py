@@ -45,7 +45,7 @@ class ColladaLoader:
                     controllers.append(skin_data)
         return controllers
 
-    def get_skinning_data(self):
+    def get_animations(self):
         #Extrait et retourne les animations.
         animations_list = []
         if self.mesh:
